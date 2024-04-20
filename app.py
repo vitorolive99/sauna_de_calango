@@ -2,7 +2,7 @@ import serial
 from serial.tools.list_ports import comports
 import csv
 from datetime import datetime
-
+from gui import create_gui
 
 # Função para encontrar a porta serial do Arduino
 def find_arduino_port():
@@ -23,7 +23,7 @@ def find_arduino_port():
     return arduino_ports[0]
 
 # Função para iniciar o programa
-def start_program():
+def start_program_CTmax():
     arquivo = "ultima_exp.txt"
     
     try:
@@ -66,4 +66,4 @@ def start_program():
         print("Erro", str(e))
 
 if __name__ == "__main__":
-    start_program()
+    create_gui(start_program_CTmax)
