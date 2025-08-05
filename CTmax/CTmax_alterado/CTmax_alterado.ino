@@ -22,12 +22,17 @@ DeviceAddress outsideThermometer;
 
 float pot = 0; // potenciômetro
 float tempAtual; // temperatura do sensor
+float aquecimento = 24; //controle da temperatura
 float tempAlvo;   // temperatura desejada
 unsigned long previousMillis = 0;
+unsigned long previousMin = 0;
 const long interval = 1000; // intervalo de 1 segundo
+const long minuto = 60000; // intervalo de 1 minuto
 
 void setup() {
   Serial.begin(9600);
+
+  pinMode(PinoReleVidro, OUTPUT); //configuração do pino
   
   sensors.begin();
   
@@ -38,7 +43,7 @@ void setup() {
 
 void loop() {
   unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
+  if ((currentMillis - previousMillis) >= interval) {
     previousMillis = currentMillis;
     sensors.requestTemperatures();
     tempAtual = sensors.getTempC(outsideThermometer);
@@ -52,10 +57,17 @@ void loop() {
     Serial.println(tempAlvo);
   }
 
-  if (tempAtual <= tempAlvo) {
-    digitalWrite(PinoReleVidro, LOW);
+  if ((currentMillis - previousMin) >= minuto && aquecimento <= tempAlvo) { //verifica se ja passou 1 minuto e se ja atingiu a tmperatura alvo
+    // Incrementa a temperatura alvo em 1 grau
+    aquecimento = aquecimento + 1;
+    // Atualiza o tempo do minuto
+    previousMin = currentMillis;
   }
-  if (tempAtual > tempAlvo) {
+
+  if (tempAtual > aquecimento) {
     digitalWrite(PinoReleVidro, HIGH);
+  }
+  else if (tempAtual <= aquecimento) {
+    digitalWrite(PinoReleVidro, LOW);
   }
 }
