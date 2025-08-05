@@ -1,0 +1,201 @@
+/* Sauna de Calango - CSS Personalizado */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar personalizada */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Cards com sombra mais suave */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Botões personalizados */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Animação para os valores de temperatura */
+.temperature-value {
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.temperature-rising {
+    color: #dc3545 !important;
+    animation: pulse-red 1s infinite;
+}
+
+.temperature-falling {
+    color: #007bff !important;
+    animation: pulse-blue 1s infinite;
+}
+
+@keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes pulse-blue {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Status de conexão */
+.connection-connected {
+    color: #28a745 !important;
+}
+
+.connection-disconnected {
+    color: #dc3545 !important;
+}
+
+/* Área do gráfico */
+#temperatureChart {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+}
+
+/* Leituras atuais */
+.current-readings .bg-warning {
+    background: linear-gradient(135deg, #ffc107, #ffca2c) !important;
+}
+
+.current-readings .bg-info {
+    background: linear-gradient(135deg, #17a2b8, #20c997) !important;
+}
+
+.current-readings .bg-secondary {
+    background: linear-gradient(135deg, #6c757d, #868e96) !important;
+}
+
+/* Informações do experimento */
+.experiment-info .bg-light {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    border: 1px solid #dee2e6;
+}
+
+/* Tabela de histórico */
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Badges e status */
+.badge {
+    font-size: 0.8em;
+    padding: 0.5em 0.8em;
+    border-radius: 20px;
+}
+
+/* Animação de loading */
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estados dos botões */
+.btn-success:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-danger:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Status do experimento */
+.status-running {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-stopped {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Efeitos de hover para a tabela */
+.table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Alert personalizado */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+/* Customização do modal */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Efeitos visuais para indicadores */
+.indicator-online {
+    animation: blink-green 2s infinite;
+}
+
+.indicator-offline {
+    animation: blink-red 2s infinite;
+}
+
+@keyframes blink-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes blink-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}

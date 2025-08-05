@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 pyserial = "*"
+flask = "*"
+flask-socketio = "*"
+python-socketio = "*"
 
 [dev-packages]
 
